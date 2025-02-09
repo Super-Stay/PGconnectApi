@@ -1,0 +1,6 @@
+@PGconnectApi_HostAddress = http://localhost:5083
+
+GET {{PGconnectApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
