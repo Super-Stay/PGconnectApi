@@ -1,8 +1,14 @@
-﻿namespace PGconnectApi.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PGconnectApi.Models
 {
-    public class Testing
+    public class testing
     {
-        public int Id { get; set; }
-        public string? Description { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+        [Required]
+        public string? DESCRIPTION { get; set; }
     }
 }

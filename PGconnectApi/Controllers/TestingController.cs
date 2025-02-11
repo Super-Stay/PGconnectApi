@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PGconnectApi.Data;
 using PGconnectApi.Models;
 
@@ -16,11 +17,19 @@ namespace PGconnectApi.Controllers
         {
             this.dbContext = dbContext;
         }
+
+        //[HttpGet]
+        //public IActionResult GetTestingDetails()
+        //{
+        //    var Testing =  dbContext.Testings.ToList();
+        //    return Ok(Testing);
+        //}
+
         [HttpGet]
-        public IActionResult GetTestingDetails()
+        public async Task<ActionResult<IEnumerable<testing>>> GetTestingDetails()
         {
-            var Testing =  dbContext.Testings.ToList();
-            return Ok(Testing);
+            var Details = await dbContext.Testings.ToListAsync();
+            return Details;
         }
     }
 }

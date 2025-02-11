@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PGconnectApi.Data;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<PgConnectDbContext>(opctions => 
-opctions.UseInMemoryDatabase(builder.Configuration.GetConnectionString("PgConnectDbContext")));
+
+
+builder.Services.AddLogging(config => config.AddConsole());
+builder.Services.AddDbContext<PgConnectDbContext>(opctions =>
+opctions.UseMySQL(builder.Configuration.GetConnectionString("PgConnectDbContext")));
 
 var app = builder.Build();
 
