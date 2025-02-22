@@ -25,10 +25,17 @@ namespace PGconnectApi.Controllers
         //    return Ok(Testing);
         //}
 
+
+
+        //localhost:5001/api/GetTestingDetails
         [HttpGet]
         public async Task<ActionResult<IEnumerable<testing>>> GetTestingDetails()
         {
             var Details = await dbContext.Testings.ToListAsync();
+            if(Details.Count < 1)
+            {
+                return NotFound();
+            }
             return Details;
         }
     }
