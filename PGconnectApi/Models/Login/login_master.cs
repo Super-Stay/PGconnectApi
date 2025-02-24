@@ -19,8 +19,8 @@ namespace PGconnectApi.Models.LoginModels
         [Required]
         public string? STATUS { get; set; }
         public int PG_ID { get; set; }
+        public DateTime CREATED_DATE { get; set; }
         public DateTime UPDATED_DATE { get; set; }
-        public DateTime UPDATED_TIME { get; set; }
         public string? FLAG {  get; set; } 
     }
 }
